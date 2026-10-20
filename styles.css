@@ -1,0 +1,737 @@
+/* =====================================================
+   ExceptionLog - Estilos de la página de inicio
+   Incluye: tipografía, colores, márgenes, padding,
+   bordes, hover y box model.
+   ===================================================== */
+
+/* ---------- BOX MODEL ----------
+   border-box: el ancho incluye el padding y el borde. */
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- TIPOGRAFÍA Y COLORES BASE ---------- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0f172a;
+  background-color: #f1f5f9;
+}
+
+h1 { font-size: 40px; margin: 0 0 8px 0; }
+h2 { font-size: 22px; color: #1e293b; margin: 0 0 12px 0; }
+h3 { font-family: "Courier New", monospace; font-size: 17px; margin: 0 0 8px 0; }
+p  { margin: 0 0 12px 0; }
+code, pre { font-family: "Courier New", monospace; }
+
+/* ---------- ENLACES Y HOVER ---------- */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover {
+  color: #1e40af;
+  text-decoration: underline;
+}
+
+/* ---------- ENCABEZADO Y MENÚ ---------- */
+header {
+  padding: 16px 32px 0 32px;
+  background-color: #ffffff;
+  border-bottom: 3px solid #2563eb;
+}
+header h2 {
+  margin-bottom: 8px;
+  font-size: 26px;
+  color: #1e3a8a;
+}
+nav {
+  color: #cbd5e1;              /* color de las barras "|" entre enlaces */
+  padding-bottom: 12px;
+}
+nav a {
+  display: inline-block;
+  margin: 0 4px;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+nav a:hover {
+  background-color: #dbeafe;
+  text-decoration: none;
+}
+header hr { display: none; }
+
+/* ---------- CONTENIDO PRINCIPAL (márgenes) ---------- */
+main {
+  max-width: 1000px;
+  margin: 24px auto;           /* margin auto: centra el contenido */
+  padding: 0 24px;
+}
+section, aside {
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+main > hr { display: none; }
+
+/* Primera sección: bienvenida con fondo oscuro */
+main > section:first-of-type {
+  color: #ffffff;
+  background-color: #0f172a;
+  border-color: #0f172a;
+}
+main > section:first-of-type p:first-child {
+  color: #38bdf8;
+  font-family: "Courier New", monospace;
+}
+main > section:first-of-type a { color: #7dd3fc; }
+main > section:first-of-type a:hover { color: #ffffff; }
+
+/* ---------- TABLAS (bordes + padding) ---------- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px;
+  border: 0;
+}
+td {
+  padding: 16px;
+  text-align: center;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+td b { color: #2563eb; font-size: 18px; }
+td:hover {
+  background-color: #dbeafe;
+  border-color: #2563eb;
+}
+
+/* ---------- TARJETAS DE ERRORES ---------- */
+article {
+  padding: 18px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 5px solid #f97316;
+  border-radius: 12px;
+}
+article:hover {
+  background-color: #f8fafc;
+  border-color: #2563eb;
+}
+article p { color: #64748b; font-size: 14px; }
+article hr, section hr { display: none; }
+
+pre {
+  margin: 0 0 12px 0;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  color: #7dd3fc;
+  background-color: #0f172a;
+  border-radius: 8px;
+}
+
+/* ---------- LISTAS ---------- */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  color: #475569;
+  background-color: #f8fafc;
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+}
+li:hover { background-color: #dbeafe; }
+
+/* ---------- ACCESO RÁPIDO / TIP ---------- */
+aside h2 { margin-top: 16px; }
+aside h2:first-child { margin-top: 0; }
+aside code { color: #b45309; background-color: #fef3c7; padding: 2px 6px; border-radius: 4px; }
+
+/* ---------- PIE DE PÁGINA ---------- */
+footer {
+  padding: 24px;
+  text-align: center;
+  color: #64748b;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+footer hr { display: none; }
+
+
+/* =====================================================
+   PÁGINAS 2 y 3: CATEGORÍAS y ERRORES
+   Cada página tiene una clase en <body> (categorias / errores)
+   para que estas reglas NO cambien la página de Inicio.
+   ===================================================== */
+
+/* ---------- Título de la página (sección blanca, no oscura) ---------- */
+body.categorias main > section:first-of-type,
+body.errores main > section:first-of-type {
+  color: #0f172a;
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+body.categorias main > section:first-of-type p,
+body.errores main > section:first-of-type p {
+  color: #64748b;
+}
+
+/* ---------- Buscador ---------- */
+input[type="text"] {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background-color: #f8fafc;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  background-color: #ffffff;
+}
+
+/* ---------- CATEGORÍAS: tarjetas ---------- */
+body.categorias td p:first-child {
+  margin-bottom: 4px;
+  font-size: 32px;            /* el emoji */
+}
+body.categorias td h3 {
+  color: #2563eb;
+  font-size: 16px;
+}
+body.categorias td p {
+  color: #475569;
+  font-size: 14px;
+}
+body.categorias td p b {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 12px;
+  color: #1d4ed8;
+  background-color: #dbeafe;
+  border-radius: 999px;
+}
+
+/* ---------- ERRORES: tabla de maquetación (filtros | lista) ---------- */
+body.errores main > table {
+  border-spacing: 0;
+  margin-bottom: 24px;
+}
+body.errores main > table > tbody > tr > td {
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
+  background: none;
+  border: 0;
+}
+body.errores main > table > tbody > tr > td:first-child {
+  padding-right: 20px;
+}
+body.errores td > section {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+/* ---------- ERRORES: panel de filtros ---------- */
+body.errores aside {
+  margin-bottom: 0;
+}
+body.errores aside h3 {
+  margin: 16px 0 6px 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #64748b;
+}
+body.errores aside li {
+  margin-bottom: 2px;
+  padding: 6px 10px;
+  font-size: 14px;
+  background: none;
+  border-left: 0;
+  cursor: pointer;
+}
+body.errores aside li:first-child {
+  color: #ffffff;
+  font-weight: 600;
+  background-color: #2563eb;
+}
+
+/* ---------- ERRORES: tarjetas de la lista ---------- */
+body.errores td section table td {
+  text-align: left;
+}
+body.errores td section table td p:first-child {
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #64748b;
+}
+body.errores td section table td p:first-child b {
+  font-size: 13px;
+  color: #dc2626;
+}
+body.errores td section table td small {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #475569;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+}
+body.errores td section table td h3 {
+  margin: 8px 0 12px 0;
+  font-size: 15px;
+}
+body.errores td section table td p:last-child {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+
+/* =====================================================
+   PÁGINAS 4 a 7: FORO, PERFIL, INICIAR SESIÓN, REGISTRO
+   Cada página usa su propia clase en <body>.
+   ===================================================== */
+
+/* ---------- BOTONES (todas las páginas) ---------- */
+button {
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1e40af;
+  border-color: #1e40af;
+}
+
+/* ---------- Quitar las líneas <hr> dentro de las celdas ---------- */
+td hr { display: none; }
+
+
+/* =====================================================
+   FORO
+   ===================================================== */
+
+/* Título (blanco, con el botón a la derecha) */
+body.foro main > section:first-of-type {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  color: #0f172a;
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+body.foro main > section:first-of-type p {
+  color: #64748b;
+  margin-bottom: 0;
+}
+body.foro main > section:first-of-type button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+/* Filtros de lenguaje (botones tipo píldora) */
+body.foro main > section:nth-of-type(2) {
+  padding: 16px 24px;
+}
+body.foro main > section:nth-of-type(2) p {
+  margin: 0;
+}
+body.foro main > section:nth-of-type(2) button {
+  margin: 4px 4px 4px 0;
+  padding: 6px 16px;
+  font-size: 14px;
+  color: #475569;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+}
+body.foro main > section:nth-of-type(2) button:hover {
+  color: #1d4ed8;
+  background-color: #dbeafe;
+  border-color: #2563eb;
+}
+body.foro main > section:nth-of-type(2) button:first-child {
+  color: #ffffff;
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* Tabla de hilos (filas en lugar de tarjetas) */
+body.foro table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body.foro th {
+  padding: 10px 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #64748b;
+  border-bottom: 2px solid #e2e8f0;
+}
+body.foro td {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  color: #475569;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #e2e8f0;
+  border-radius: 0;
+}
+body.foro tr:hover td {
+  background-color: #f1f5f9;
+}
+body.foro td:first-child b {
+  font-size: 16px;
+  color: #0f172a;
+}
+body.foro td small {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #64748b;
+}
+body.foro td:last-child {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   PERFIL
+   ===================================================== */
+
+/* Tabla de maquetación (perfil | contenido) */
+body.perfil main > table {
+  border-spacing: 0;
+  margin-bottom: 24px;
+}
+body.perfil main > table > tbody > tr > td {
+  padding: 0;
+  text-align: left;
+  vertical-align: top;
+  background: none;
+  border: 0;
+}
+body.perfil main > table > tbody > tr > td:first-child {
+  padding-right: 20px;
+}
+
+/* Tarjeta del usuario */
+body.perfil aside {
+  margin-bottom: 0;
+  text-align: center;
+}
+body.perfil aside h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 12px auto;
+  font-size: 30px;
+  color: #ffffff;
+  background-color: #2563eb;
+  border-radius: 50%;
+}
+body.perfil aside h2 {
+  margin: 0 0 4px 0;
+}
+body.perfil aside p b {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #1d4ed8;
+}
+body.perfil aside h3 {
+  margin: 16px 0 6px 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #64748b;
+}
+body.perfil aside p {
+  font-size: 14px;
+}
+body.perfil aside h3 + p {
+  text-align: left;
+}
+body.perfil aside ul {
+  margin: 16px 0;
+  text-align: left;
+}
+body.perfil aside li {
+  margin-bottom: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+body.perfil aside table {
+  margin: 0 -10px;
+  width: calc(100% + 20px);
+}
+body.perfil aside table td {
+  padding: 10px 4px;
+  font-size: 13px;
+}
+
+/* Pestañas (menú interno) */
+body.perfil td > nav {
+  margin-bottom: 16px;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+body.perfil td > nav a {
+  margin: 0 2px;
+}
+
+/* Secciones: errores, hilos e historial */
+body.perfil td > section h3 {
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+body.perfil article h4 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+body.perfil article p {
+  margin-bottom: 4px;
+}
+body.perfil li code {
+  padding: 2px 6px;
+  font-size: 13px;
+  color: #b45309;
+  background-color: #fef3c7;
+  border-radius: 4px;
+}
+body.perfil li small {
+  color: #64748b;
+}
+
+
+/* =====================================================
+   INICIAR SESIÓN y REGISTRO (pantalla dividida)
+   ===================================================== */
+
+body.iniciar-sesion > table,
+body.registro > table {
+  width: 100%;
+  height: 100vh;
+  border-spacing: 0;
+}
+body.iniciar-sesion > table > tbody > tr > td,
+body.registro > table > tbody > tr > td {
+  padding: 48px;
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+}
+
+/* Mitad izquierda: panel oscuro de bienvenida */
+body.iniciar-sesion > table > tbody > tr > td:first-child,
+body.registro > table > tbody > tr > td:first-child {
+  vertical-align: middle;
+  color: #ffffff;
+  background-color: #0f172a;
+}
+body.iniciar-sesion td section,
+body.registro td section {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+body.iniciar-sesion td section h1,
+body.registro td section h1 {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  font-family: "Courier New", monospace;
+  font-size: 40px;
+  color: #ffffff;
+  background-color: #2563eb;
+  border-radius: 14px;
+}
+body.iniciar-sesion td section h2,
+body.registro td section h2 {
+  font-size: 34px;
+  color: #ffffff;
+}
+body.iniciar-sesion td section p,
+body.registro td section p {
+  font-size: 18px;
+  color: #cbd5e1;
+}
+body.iniciar-sesion td section pre,
+body.registro td section pre {
+  margin-top: 28px;
+  padding: 16px;
+  font-size: 14px;
+  color: #7dd3fc;
+  background-color: #1e293b;
+}
+
+/* Mitad derecha: formulario */
+body.iniciar-sesion > table > tbody > tr > td:last-child,
+body.registro > table > tbody > tr > td:last-child {
+  vertical-align: middle;
+  background-color: #ffffff;
+}
+body.iniciar-sesion td header,
+body.registro td header {
+  max-width: 420px;
+  margin: 0 auto 24px auto;
+  padding: 0;
+  border: 0;
+}
+body.iniciar-sesion td header h2,
+body.registro td header h2 {
+  margin: 0;
+}
+body.iniciar-sesion td main,
+body.registro td main {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0;
+}
+body.iniciar-sesion td main h1,
+body.registro td main h1 {
+  font-size: 32px;
+}
+
+/* Campos del formulario */
+form label {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #64748b;
+}
+form br {
+  display: none;
+}
+body.iniciar-sesion form input,
+body.registro form input,
+body.registro form select {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 15px;
+  color: #0f172a;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+}
+body.iniciar-sesion form input:focus,
+body.registro form input:focus,
+body.registro form select:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #2563eb;
+}
+form button[type="submit"] {
+  width: 100%;
+  padding: 13px;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* "¿Olvidaste tu contraseña?" a la derecha */
+body.iniciar-sesion form p a {
+  float: right;
+  font-size: 13px;
+}
+
+/* Botones Google / GitHub */
+body.iniciar-sesion td main > p:nth-of-type(2) {
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+body.iniciar-sesion td main p:has(> button[type="button"]) {
+  display: flex;
+  gap: 12px;
+}
+body.iniciar-sesion button[type="button"] {
+  flex: 1;
+  color: #1e293b;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+}
+body.iniciar-sesion button[type="button"]:hover {
+  background-color: #dbeafe;
+  border-color: #2563eb;
+}
+body.iniciar-sesion td main > p:last-child,
+body.registro td main > p:last-child {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #64748b;
+}
+
+/* ---------- Ajustes finales ---------- */
+body.foro td:last-child {
+  white-space: nowrap;
+}
+body.perfil li b {
+  font-size: 15px;
+  color: #0f172a;
+}
+
+
+/* =====================================================
+   MENSAJES DEL REGISTRO (éxito / error)
+   ===================================================== */
+.mensaje {
+  display: none;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.mensaje.exito {
+  display: block;
+  color: #166534;
+  background-color: #dcfce7;
+  border: 1px solid #86efac;
+}
+.mensaje.error {
+  display: block;
+  color: #991b1b;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+}
