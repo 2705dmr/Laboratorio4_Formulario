@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrarse - ExceptionLog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="registro">
+
+<table width="100%" cellpadding="30">
+  <tr>
+
+    <td valign="top" width="50%">
+      <section>
+        <h1>EX</h1>
+        <h2>Únete a ExceptionLog</h2>
+        <p>El banco de experiencias donde los errores de programación se convierten en conocimiento compartido.</p>
+        <pre><code>// Tu próximo bug ya tiene solución aquí
+throw new ExceptionLog('join us');</code></pre>
+      </section>
+    </td>
+
+    <td valign="top" width="50%">
+      <header>
+        <h2>ExceptionLog</h2>
+      </header>
+      <main>
+        <h1>Crear cuenta</h1>
+        <p>Crea tu cuenta para unirte a la comunidad.</p>
+
+        <div id="mensaje"></div>
+
+        <form id="formulario">
+          <p>
+            <label for="nombre">NOMBRE COMPLETO</label><br>
+            <input type="text" id="nombre" name="nombre" placeholder="Ana García">
+          </p>
+          <p>
+            <label for="usuario">USUARIO</label><br>
+            <input type="text" id="usuario" name="usuario" placeholder="@ana_dev">
+          </p>
+          <p>
+            <label for="correo">CORREO ELECTRÓNICO</label><br>
+            <input type="email" id="correo" name="correo" placeholder="ana@empresa.com">
+          </p>
+          <p>
+            <label for="rol">ROL PROFESIONAL</label><br>
+            <select id="rol" name="rol">
+              <option value="">Selecciona tu rol...</option>
+              <option value="estudiante">Estudiante</option>
+              <option value="junior">Desarrollador Junior</option>
+              <option value="senior">Desarrollador Senior</option>
+              <option value="otro">Otro</option>
+            </select>
+          </p>
+          <p>
+            <label for="clave">CONTRASEÑA</label><br>
+            <input type="password" id="clave" name="clave" placeholder="********">
+          </p>
+          <p>
+            <label for="confirmar">CONFIRMAR</label><br>
+            <input type="password" id="confirmar" name="confirmar" placeholder="********">
+          </p>
+          <p><button type="submit">Registrarme</button></p>
+        </form>
+
+        <p>Al registrarte aceptas los <a href="#">Términos de uso</a> y la <a href="#">Política de privacidad</a>.</p>
+      </main>
+    </td>
+
+  </tr>
+</table>
+
+<script>
+// ===== REGISTRO DE USUARIO =====
+// Guarda el usuario en el navegador (localStorage) y muestra un mensaje.
+
+const formulario = document.getElementById("formulario");
+const mensaje = document.getElementById("mensaje");
+
+// Muestra un mensaje de éxito o de error encima del formulario
+function mostrarMensaje(texto, tipo) {
+  mensaje.textContent = texto;
+  mensaje.className = "mensaje " + tipo;   // tipo = "exito" o "error"
+}
+
+formulario.addEventListener("submit", function (evento) {
+  evento.preventDefault();   // evita que la página se recargue
+
+  // 1. Leer los datos escritos
+  const nombre    = document.getElementById("nombre").value.trim();
+  let   usuario   = document.getElementById("usuario").value.trim();
+  const correo    = document.getElementById("correo").value.trim();
+  const rol       = document.getElementById("rol").value;
+  const clave     = document.getElementById("clave").value;
+  const confirmar = document.getElementById("confirmar").value;
+
+  // 2. Validar
+  if (nombre === "" || usuario === "" || correo === "" || rol === "" || clave === "" || confirmar === "") {
+    mostrarMensaje("Completa todos los campos para continuar.", "error");
+    return;
+  }
+  if (!correo.includes("@") || !correo.includes(".")) {
+    mostrarMensaje("Escribe un correo electrónico válido.", "error");
+    return;
+  }
+  if (clave.length < 6) {
+    mostrarMensaje("La contraseña debe tener al menos 6 caracteres.", "error");
+    return;
+  }
+  if (clave !== confirmar) {
+    mostrarMensaje("Las contraseñas no coinciden.", "error");
+    return;
+  }
+
+  // El usuario siempre empieza con @
+  if (!usuario.startsWith("@")) {
+    usuario = "@" + usuario;
+  }
+
+  // 3. Revisar que no exista ya
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  for (let i = 0; i < usuarios.length; i++) {
+    if (usuarios[i].correo === correo) {
+      mostrarMensaje("Ese correo ya está registrado.", "error");
+      return;
+    }
+    if (usuarios[i].usuario === usuario) {
+      mostrarMensaje("Ese nombre de usuario ya está en uso.", "error");
+      return;
+    }
+  }
+
+  // 4. Guardar el nuevo usuario
+  usuarios.push({ nombre: nombre, usuario: usuario, correo: correo, rol: rol, clave: clave });
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+  // 5. Iniciar sesión automáticamente
+  localStorage.setItem("sesion", JSON.stringify({ nombre: nombre, usuario: usuario, correo: correo, rol: rol }));
+
+  // 6. Mostrar mensaje y llevar al inicio
+  mostrarMensaje("✓ ¡Cuenta creada! Sesión iniciada como " + usuario, "exito");
+  formulario.reset();
+});
+</script>
+
+</body>
+</html>
+
